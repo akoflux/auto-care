@@ -1,0 +1,234 @@
+<Window x:Class="FleetManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Fleet Manager" Height="750" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        Background="#0F172A"
+        Loaded="Window_Loaded"
+        MinHeight="600" MinWidth="900">
+    <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#6366F1"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="#8B5CF6"/>
+        <SolidColorBrush x:Key="SuccessBrush" Color="#10B981"/>
+        <SolidColorBrush x:Key="DangerBrush" Color="#EF4444"/>
+        <SolidColorBrush x:Key="WarningBrush" Color="#F59E0B"/>
+
+        <Style x:Key="SidebarButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#94A3B8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Padding" Value="20,15"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                Margin="8,2"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#334155"/>
+                                <Setter Property="Foreground" Value="#F8FAFC"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="#1E293B">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Logo et titre -->
+                <StackPanel Grid.Row="0" Margin="20,30,20,30">
+                    <Border Width="60" Height="60" CornerRadius="15" Margin="0,0,0,15">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#6366F1" Offset="0"/>
+                                <GradientStop Color="#8B5CF6" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <TextBlock Text="FM"
+                                  FontSize="24"
+                                  FontWeight="Bold"
+                                  Foreground="White"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                    </Border>
+                    <TextBlock Text="Fleet Manager"
+                              FontSize="22"
+                              FontWeight="Bold"
+                              Foreground="#F8FAFC"
+                              HorizontalAlignment="Center"/>
+                    <TextBlock Text="Gestion de parc auto"
+                              FontSize="12"
+                              Foreground="#94A3B8"
+                              HorizontalAlignment="Center"
+                              Margin="0,5,0,0"/>
+                </StackPanel>
+
+                <!-- Menu de navigation -->
+                <StackPanel Grid.Row="1" Margin="0,10,0,0">
+                    <TextBlock Text="MENU PRINCIPAL"
+                              FontSize="11"
+                              FontWeight="SemiBold"
+                              Foreground="#94A3B8"
+                              Margin="20,0,0,10"
+                              Opacity="0.7"/>
+
+                    <Button x:Name="BtnDashboard"
+                            Style="{StaticResource SidebarButtonStyle}"
+                            Click="BtnDashboard_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#x1F4CA;" FontSize="18" Margin="0,0,12,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="Tableau de bord" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="BtnVehicules"
+                            Style="{StaticResource SidebarButtonStyle}"
+                            Click="BtnVehicules_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#x1F697;" FontSize="18" Margin="0,0,12,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="Vehicules" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="BtnPlein"
+                            Style="{StaticResource SidebarButtonStyle}"
+                            Click="BtnPlein_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#x26FD;" FontSize="18" Margin="0,0,12,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="Ajouter un plein" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="BtnTrajet"
+                            Style="{StaticResource SidebarButtonStyle}"
+                            Click="BtnTrajet_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#x1F6E3;" FontSize="18" Margin="0,0,12,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="Suivi Kilometrage" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="BtnUtilisateurs"
+                            Style="{StaticResource SidebarButtonStyle}"
+                            Click="BtnUtilisateurs_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#x1F464;" FontSize="18" Margin="0,0,12,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="Utilisateurs" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <!-- Info utilisateur et deconnexion -->
+                <StackPanel Grid.Row="2" Margin="15,0,15,20">
+                    <Border Background="#334155" CornerRadius="8" Padding="12,10" Margin="0,0,0,10">
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse x:Name="ConnectionIndicator"
+                                     Width="8" Height="8"
+                                     Fill="Gray"
+                                     Margin="0,0,10,0"
+                                     VerticalAlignment="Center"/>
+                            <TextBlock x:Name="ConnectionStatus"
+                                      Text="Connexion..."
+                                      FontSize="12"
+                                      Foreground="#94A3B8"
+                                      VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="#334155" CornerRadius="8" Padding="12" Margin="0,0,0,10">
+                        <StackPanel>
+                            <TextBlock x:Name="TxtUserName"
+                                      Text="Utilisateur"
+                                      FontSize="14"
+                                      FontWeight="SemiBold"
+                                      Foreground="#F8FAFC"/>
+                            <TextBlock x:Name="TxtUserRole"
+                                      Text="Role"
+                                      FontSize="12"
+                                      Foreground="#94A3B8"
+                                      Margin="0,3,0,0"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Button Content="Deconnexion"
+                           Padding="15,12"
+                           Background="#EF4444"
+                           Foreground="White"
+                           FontWeight="SemiBold"
+                           BorderThickness="0"
+                           Cursor="Hand"
+                           Click="BtnDeconnexion_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="8"
+                                        Padding="{TemplateBinding Padding}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#DC2626"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Contenu principal avec Frame -->
+        <Border Grid.Column="1" Background="#0F172A">
+            <Grid Margin="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Margin="0,0,0,25">
+                    <TextBlock x:Name="TxtPageTitle"
+                              Text="Tableau de bord"
+                              FontSize="28"
+                              FontWeight="Bold"
+                              Foreground="#F8FAFC"/>
+                    <TextBlock x:Name="TxtPageSubtitle"
+                              Text="Vue d'ensemble de votre flotte"
+                              FontSize="14"
+                              Foreground="#94A3B8"
+                              Margin="0,5,0,0"/>
+                </StackPanel>
+
+                <Frame x:Name="MainFrame"
+                       Grid.Row="1"
+                       NavigationUIVisibility="Hidden"
+                       Background="Transparent"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

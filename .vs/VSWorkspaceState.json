@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Application",
+    "\\Application\\Application",
+    "\\Application\\Application\\bin",
+    "\\Application\\Application\\Views",
+    "\\DataBase",
+    "\\Models"
+  ],
+  "PreviewInSolutionExplorer": false
+}

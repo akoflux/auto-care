@@ -1,0 +1,60 @@
+<Window x:Class="FleetManager.Views.TrajetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Fleet Manager - Suivi Kilometrage" Height="550" Width="500"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5"
+        ResizeMode="NoResize">
+    <Grid>
+        <Border Background="#1565C0" Height="60" VerticalAlignment="Top">
+            <TextBlock Text="Suivi Kilometrage"
+                      FontSize="22"
+                      FontWeight="Bold"
+                      Foreground="White"
+                      VerticalAlignment="Center"
+                      Margin="20,0"/>
+        </Border>
+
+        <Border Background="White" Margin="30,90,30,30" Padding="25" CornerRadius="8">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="5" Color="#CCC" Opacity="0.3"/>
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock Text="Vehicule" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                <ComboBox x:Name="CmbVehicule" Height="40" FontSize="14" SelectionChanged="CmbVehicule_SelectionChanged"/>
+
+                <TextBlock Text="Date de depart" FontSize="14" FontWeight="SemiBold" Margin="0,20,0,8"/>
+                <DatePicker x:Name="DpDateDepart" Height="40" FontSize="14"/>
+
+                <TextBlock Text="Kilometrage au depart" FontSize="14" FontWeight="SemiBold" Margin="0,20,0,8"/>
+                <TextBox x:Name="TxtKmDepart" Height="40" FontSize="14" Padding="10" IsReadOnly="True" Background="#F0F0F0"/>
+
+                <TextBlock Text="Date d'arrivee" FontSize="14" FontWeight="SemiBold" Margin="0,20,0,8"/>
+                <DatePicker x:Name="DpDateArrivee" Height="40" FontSize="14"/>
+
+                <TextBlock Text="Kilometrage a l'arrivee" FontSize="14" FontWeight="SemiBold" Margin="0,20,0,8"/>
+                <TextBox x:Name="TxtKmArrivee" Height="40" FontSize="14" Padding="10"/>
+
+                <Button x:Name="BtnValider"
+                       Content="Enregistrer le trajet"
+                       Height="45"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       Margin="0,30,0,0"
+                       Background="#4CAF50"
+                       Foreground="White"
+                       BorderThickness="0"
+                       Cursor="Hand"
+                       Click="BtnValider_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="6">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

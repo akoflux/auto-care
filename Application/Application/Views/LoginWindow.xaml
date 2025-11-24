@@ -1,0 +1,132 @@
+<Window x:Class="FleetManager.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Fleet Manager - Connexion" Height="550" Width="450"
+        WindowStartupLocation="CenterScreen"
+        Background="#0F172A"
+        ResizeMode="NoResize">
+    <Grid>
+        <!-- Header avec gradient -->
+        <Border Height="140" VerticalAlignment="Top">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#6366F1" Offset="0"/>
+                    <GradientStop Color="#8B5CF6" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel VerticalAlignment="Center">
+                <Border Width="50" Height="50" CornerRadius="12" Background="White" Opacity="0.2" Margin="0,0,0,10">
+                    <TextBlock Text="FM"
+                              FontSize="18"
+                              FontWeight="Bold"
+                              Foreground="White"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"/>
+                </Border>
+                <TextBlock Text="Fleet Manager"
+                          FontSize="28"
+                          FontWeight="Bold"
+                          Foreground="White"
+                          HorizontalAlignment="Center"/>
+                <TextBlock Text="Connexion a votre espace"
+                          FontSize="13"
+                          Foreground="White"
+                          Opacity="0.8"
+                          HorizontalAlignment="Center"
+                          Margin="0,5,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Formulaire de connexion -->
+        <Border Background="#1E293B"
+                CornerRadius="12"
+                Margin="35,160,35,35"
+                Padding="30">
+            <StackPanel VerticalAlignment="Top">
+                <TextBlock Text="Email"
+                          FontSize="14"
+                          FontWeight="SemiBold"
+                          Foreground="#F8FAFC"
+                          Margin="0,0,0,8"/>
+                <TextBox x:Name="TxtEmail"
+                        Height="45"
+                        FontSize="14"
+                        Padding="12,10"
+                        Background="#334155"
+                        Foreground="#F8FAFC"
+                        BorderBrush="#475569"
+                        BorderThickness="1"
+                        CaretBrush="#F8FAFC"/>
+
+                <TextBlock Text="Mot de passe"
+                          FontSize="14"
+                          FontWeight="SemiBold"
+                          Foreground="#F8FAFC"
+                          Margin="0,20,0,8"/>
+                <PasswordBox x:Name="TxtPassword"
+                            Height="45"
+                            FontSize="14"
+                            Padding="12,10"
+                            Background="#334155"
+                            Foreground="#F8FAFC"
+                            BorderBrush="#475569"
+                            BorderThickness="1"
+                            CaretBrush="#F8FAFC"
+                            KeyDown="TxtPassword_KeyDown"/>
+
+                <TextBlock x:Name="TxtErreur"
+                          Text=""
+                          Foreground="#EF4444"
+                          FontSize="12"
+                          Margin="0,15,0,0"
+                          TextWrapping="Wrap"/>
+
+                <Button x:Name="BtnConnexion"
+                       Content="Se connecter"
+                       Height="50"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       Margin="0,25,0,0"
+                       Foreground="White"
+                       BorderThickness="0"
+                       Cursor="Hand"
+                       Click="BtnConnexion_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border"
+                                    CornerRadius="8"
+                                    Padding="{TemplateBinding Padding}">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Color="#6366F1" Offset="0"/>
+                                        <GradientStop Color="#8B5CF6" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background">
+                                        <Setter.Value>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                <GradientStop Color="#4F46E5" Offset="0"/>
+                                                <GradientStop Color="#7C3AED" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <TextBlock Text="Version 1.0 - Projet BTS SIO"
+                          FontSize="11"
+                          Foreground="#64748B"
+                          HorizontalAlignment="Center"
+                          Margin="0,20,0,0"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
