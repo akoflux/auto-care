@@ -314,8 +314,8 @@ dotnet run
 
 ### Compte par défaut
 
-- **Email** : `admin@autocare.fr`
-- **Mot de passe** : `Admin123!`
+- **Email** : `admin@client.fr`
+- **Mot de passe** : `password123`
 - **Rôle** : Super Admin
 
 ---
@@ -608,3 +608,4 @@ Il est fourni à titre d'exemple et n'est pas destiné à un usage en production
 ---
 
 *Dernière mise à jour : Décembre 2025*
+
